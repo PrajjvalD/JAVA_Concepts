@@ -1,0 +1,167 @@
+package com.collection.lists;
+
+
+import java.util.*;
+
+public class VectorBasics {
+	
+	public void wayToInitialize() {
+		 // 1. Using the Default Constructor
+        Vector<String> vector1 = new Vector<>();
+        System.out.println("Vector1 (default constructor): " + vector1);
+
+        // 2. Using Constructor with Initial Capacity
+        Vector<String> vector2 = new Vector<>(20);
+        System.out.println("Vector2 (initial capacity 20): " + vector2);
+
+        // 3. Using Constructor with Initial Capacity and Capacity Increment
+        Vector<String> vector3 = new Vector<>(20, 10);
+        System.out.println("Vector3 (capacity 20, increment 10): " + vector3);
+
+        // 4. Using an Existing Collection
+        List<String> list = Arrays.asList("Apple", "Banana", "Cherry");
+        Vector<String> vector4 = new Vector<>(list);
+        System.out.println("Vector4 (from list): " + vector4);
+
+        // 5. Using Arrays.asList()
+        Vector<String> vector5 = new Vector<>(Arrays.asList("Apple", "Banana", "Cherry"));
+        System.out.println("Vector5 (from Arrays.asList): " + vector5);
+
+        // 6. Using a for loop
+        Vector<Integer> vector6 = new Vector<>();
+        for (int i = 0; i < 5; i++) {
+            vector6.add(i);
+        }
+        System.out.println("Vector6 (from for loop): " + vector6);
+
+        // 7. Using Collections.addAll()
+        Vector<String> vector7 = new Vector<>();
+        Collections.addAll(vector7, "Apple", "Banana", "Cherry");
+        System.out.println("Vector7 (from Collections.addAll): " + vector7);
+	}
+	
+	public void vectorOperations() {
+		// Create a Vector of Strings
+        Vector<String> vector = new Vector<>();
+
+        // 1. add(E e) - Adds an element to the end of the Vector
+        vector.add("Apple");
+        vector.add("Banana");
+        vector.add("Cherry");
+        System.out.println("After add: " + vector);
+
+        // 2. add(index, E element) - Adds an element at the specified index
+        vector.add(1, "Mango");
+        System.out.println("After add(index, element): " + vector);
+
+        // 3. get(int index) - Retrieves the element at the specified index
+        String firstElement = vector.get(0);
+        System.out.println("Element at index 0: " + firstElement);
+
+        // 4. set(int index, E element) - Replaces the element at the specified index
+        vector.set(2, "Grapes");
+        System.out.println("After set(index, element): " + vector);
+
+        // 5. remove(Object o) - Removes the first occurrence of the specified element
+        vector.remove("Banana");
+        System.out.println("After remove(Object o): " + vector);
+
+        // 6. remove(int index) - Removes the element at the specified index
+        vector.remove(1);
+        System.out.println("After remove(index): " + vector);
+
+        // 7. removeAllElements() - Removes all elements from the vector
+        vector.removeAllElements();
+        System.out.println("After removeAllElements: " + vector);
+
+        // 8. contains(Object o) - Checks if the vector contains the specified element
+        boolean containsApple = vector.contains("Apple");
+        System.out.println("Contains 'Apple': " + containsApple);
+
+        // 9. size() - Returns the number of elements in the vector
+        vector.add("Orange");
+        vector.add("Peach");
+        int size = vector.size();
+        System.out.println("Size of the vector: " + size);
+
+        // 10. isEmpty() - Checks if the vector is empty
+        boolean isEmpty = vector.isEmpty();
+        System.out.println("Is the vector empty? " + isEmpty);
+
+        // 11. elementAt(int index) - Retrieves the element at the specified index (deprecated)
+        String elementAt = vector.elementAt(0);
+        System.out.println("Element at index 0 (elementAt): " + elementAt);
+
+        // 12. firstElement() - Retrieves the first element of the vector
+        String firstElement2 = vector.firstElement();
+        System.out.println("First element (firstElement): " + firstElement2);
+
+        // 13. lastElement() - Retrieves the last element of the vector
+        String lastElement = vector.lastElement();
+        System.out.println("Last element (lastElement): " + lastElement);
+
+        // 14. clone() - Creates a shallow copy of the vector
+        Vector<String> vectorClone = (Vector<String>) vector.clone();
+        System.out.println("Cloned Vector: " + vectorClone);
+
+        // 15. ensureCapacity(int minCapacity) - Ensures that the vector has at least the specified capacity
+        vector.ensureCapacity(10);
+        System.out.println("After ensureCapacity: " + vector);
+
+        // 16. trimToSize() - Resizes the vector to the actual size (removes extra capacity)
+        vector.trimToSize();
+        System.out.println("After trimToSize: " + vector);
+
+        // 17. getCapacity() - Returns the current capacity of the vector
+        int capacity = vector.capacity();
+        System.out.println("Current capacity: " + capacity);
+
+        // 18. forEach(Consumer<? super E> action) - Performs the given action on each element
+        vector.forEach(element -> System.out.println("Element using forEach: " + element));
+
+        // 19. indexOf(Object o) - Returns the index of the first occurrence of the specified element
+        int index = vector.indexOf("Orange");
+        System.out.println("Index of 'Orange': " + index);
+
+        // 20. lastIndexOf(Object o) - Returns the index of the last occurrence of the specified element
+        vector.add("Orange"); // Add Orange again to demonstrate lastIndexOf
+        int lastIndex = vector.lastIndexOf("Orange");
+        System.out.println("Last index of 'Orange': " + lastIndex);
+
+        // 21. toArray() - Converts the vector to an array
+        Object[] array = vector.toArray();
+        System.out.println("Vector as array: " + Arrays.toString(array));
+
+        // 22. toArray(T[] a) - Converts the vector to a specified type of array
+        String[] stringArray = vector.toArray(new String[0]);
+        System.out.println("Vector as String array: " + Arrays.toString(stringArray));
+
+        // 23. containsAll(Collection<?> c) - Checks if the vector contains all elements of the specified collection
+        List<String> list = Arrays.asList("Orange", "Peach");
+        boolean containsAll = vector.containsAll(list);
+        System.out.println("Contains all elements from the list? " + containsAll);
+
+        // 24. addAll(Collection<? extends E> c) - Adds all elements from the specified collection to the vector
+        vector.addAll(list);
+        System.out.println("After addAll: " + vector);
+
+        // 25. removeAll(Collection<?> c) - Removes all elements of the specified collection from the vector
+        vector.removeAll(list);
+        System.out.println("After removeAll: " + vector);
+
+        // 26. retainAll(Collection<?> c) - Retains only the elements that are also in the specified collection
+        vector.retainAll(list);
+        System.out.println("After retainAll: " + vector);
+	}
+
+	public static void main(String[] args) {
+		VectorBasics vectorBasics = new VectorBasics();
+		
+		System.out.println("Vector Initialize"+"\n-----------------------");
+		vectorBasics.wayToInitialize();
+		System.out.println("\nVector Operations"+"\n-----------------------");
+		vectorBasics.vectorOperations();;
+
+	}
+
+}
